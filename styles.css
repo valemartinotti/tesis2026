@@ -21,6 +21,8 @@ body {
     line-height: 1.6;
 }
 
+img, iframe { max-width: 100%; }
+
 h1, h2, h3, h4, h5, h6 { margin-top: 0; color: var(--ink); }
 
 header {
@@ -30,8 +32,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px 24px;
     min-height: 68px;
-    padding: 10px 5%;
+    padding: 10px clamp(16px, 5vw, 64px);
     background: rgba(16, 32, 27, 0.96);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -41,43 +44,49 @@ header {
     align-items: center;
     gap: 10px;
     color: #fff;
-    font-size: 1.25rem;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
     font-weight: 800;
     text-decoration: none;
+    white-space: nowrap;
 }
-.logo img { width: 36px; height: 36px; object-fit: contain; border-radius: 6px; }
+.logo img { flex: 0 0 36px; width: 36px; height: 36px; object-fit: contain; border-radius: 6px; }
 .logo span { color: var(--accent); }
 
-nav { display: flex; align-items: center; flex-wrap: wrap; }
+nav { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 4px 18px; }
 nav a {
-    margin-left: 18px;
     color: rgba(255, 255, 255, 0.82);
     font-size: 0.95rem;
     font-weight: 650;
     text-decoration: none;
+    padding: 7px 0;
 }
 nav a:hover, nav a.active { color: var(--accent); }
+nav a:focus-visible, .logo:focus-visible, .btn:focus-visible, .weather-select:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
 
-section { max-width: 1100px; margin: 0 auto; padding: 64px 5%; }
-.section-title { margin-bottom: 38px; text-align: center; }
+section { width: 100%; max-width: 1100px; margin: 0 auto; padding: clamp(40px, 6vw, 64px) clamp(20px, 5vw, 56px); }
+.section-title { margin-bottom: clamp(26px, 4vw, 38px); text-align: center; }
 .section-title h1, .section-title h2 {
     margin-bottom: 8px;
-    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+    line-height: 1.2;
 }
 .section-title p { max-width: 650px; margin: 0 auto; color: var(--muted); }
 
 .hero {
-    min-height: 440px;
+    min-height: clamp(360px, 48vw, 520px);
     display: flex;
     align-items: center;
-    padding: 64px 7%;
+    padding: clamp(48px, 8vw, 88px) clamp(20px, 7vw, 96px);
     background-color: #eef3f0;
     background-image: linear-gradient(90deg, rgba(238, 243, 240, 1) 0%, rgba(238, 243, 240, 0.94) 52%, rgba(238, 243, 240, 0.25) 100%), url("civicsense-logo.png");
     background-repeat: no-repeat;
     background-position: left top, right 8% center;
     background-size: cover, auto 82%;
 }
-.hero-content { max-width: 720px; }
+.hero-content { width: 100%; max-width: 720px; }
 .badge {
     display: inline-block;
     margin-bottom: 18px;
@@ -86,11 +95,12 @@ section { max-width: 1100px; margin: 0 auto; padding: 64px 5%; }
     font-weight: 800;
     letter-spacing: 0.02em;
 }
-.hero h1 { max-width: 700px; margin-bottom: 16px; font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.05; }
-.hero p { max-width: 650px; margin: 0 0 28px; color: var(--muted); font-size: 1.08rem; }
+.hero h1 { max-width: 700px; margin-bottom: 16px; font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1.05; }
+.hero p { max-width: 650px; margin: 0 0 28px; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.08rem); }
 
 .btn {
     display: inline-block;
+    max-width: 100%;
     border: 0;
     border-radius: 8px;
     padding: 12px 22px;
@@ -105,7 +115,7 @@ section { max-width: 1100px; margin: 0 auto; padding: 64px 5%; }
 
 .simulator-wrapper { text-align: center; }
 .simulator-wrapper h2 { margin-bottom: 8px; font-size: clamp(1.8rem, 3vw, 2.3rem); }
-.simulator-description { max-width: 650px; margin: 10px auto 28px; color: var(--muted); }
+.simulator-wrapper > p { max-width: 650px; margin: 10px auto 28px; color: var(--muted); }
 
 .road-scene {
     position: relative;
@@ -127,10 +137,11 @@ section { max-width: 1100px; margin: 0 auto; padding: 64px 5%; }
     left: 50%;
     max-width: calc(100% - 24px);
     transform: translateX(-50%);
-    padding: 8px 12px;
+    padding: 7px clamp(8px, 2vw, 12px);
     background: rgba(247, 249, 248, 0.94);
     color: #52605a;
     font-family: Consolas, monospace;
+    font-size: clamp(0.7rem, 2vw, 1rem);
     text-align: center;
 }
 .led-sign.active { background: #daf5e9; color: #174c3b; font-weight: 800; }
@@ -139,10 +150,11 @@ section { max-width: 1100px; margin: 0 auto; padding: 64px 5%; }
 .sensor-panel.active .sensor-status { background: #daf5e9; color: #174c3b; }
 
 .weather-controls { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 18px; }
-.weather-controls > div { min-width: 220px; }
+.weather-controls > div { flex: 1 1 220px; max-width: 320px; min-width: 0; }
 .weather-controls label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 0.8rem; font-weight: 750; text-align: center; }
 .weather-select {
-    width: 220px;
+    width: 100%;
+    min-height: 44px;
     border: 1px solid var(--line);
     border-radius: 6px;
     padding: 11px 14px;
@@ -155,8 +167,8 @@ section { max-width: 1100px; margin: 0 auto; padding: 64px 5%; }
 
 .concept-box, .grid-3 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: clamp(20px, 3vw, 30px);
 }
 .card, .feature-item, .timeline-item {
     padding: 6px 0;
@@ -168,12 +180,12 @@ section { max-width: 1100px; margin: 0 auto; padding: 64px 5%; }
 .card h3, .feature-item h4, .timeline-item h4 { margin: 14px 0 8px; }
 .card p, .feature-item p, .timeline-item p { margin: 0; color: var(--muted); }
 
-.timeline { display: flex; flex-direction: column; gap: 34px; border: 0; }
+.timeline { display: flex; flex-direction: column; gap: clamp(24px, 4vw, 34px); border: 0; }
 .timeline-item { position: relative; padding: 16px 0 0; }
 .year { color: var(--primary); font-weight: 800; }
 
 .map-card { border: 0; overflow: hidden; background: transparent; }
-.map-card iframe { display: block; width: 100%; height: 600px; border: 0; border-radius: 14px; }
+.map-card iframe { display: block; width: 100%; height: clamp(320px, 58vw, 600px); border: 0; border-radius: 14px; }
 .map-caption { padding: 10px 0; color: var(--muted); font-size: 0.85rem; }
 .project-note { margin-top: 28px; padding: 24px 0 0; border-top: 2px solid var(--line); }
 .project-note h2 { margin-bottom: 8px; font-size: 1.2rem; }
@@ -181,7 +193,7 @@ section { max-width: 1100px; margin: 0 auto; padding: 64px 5%; }
 
 footer {
     margin-top: 60px;
-    padding: 38px 20px;
+    padding: 32px clamp(16px, 5vw, 40px);
     background: #10201b;
     color: #dce7e2;
     text-align: center;
@@ -189,14 +201,26 @@ footer {
 footer p { margin: 4px 0; }
 footer strong { color: #fff; }
 
-@media (max-width: 700px) {
-    header { align-items: flex-start; flex-direction: column; gap: 8px; padding-top: 12px; padding-bottom: 12px; }
-    nav { gap: 10px; }
-    nav a { margin: 0 10px 0 0; }
-    .hero { min-height: 360px; padding: 48px 5%; background-position: left top, right -120px center; background-size: cover, auto 60%; }
-    .hero h1 { font-size: 2.3rem; }
-    section { padding: 48px 5%; }
-    .weather-field, .weather-select { width: 100%; min-width: 0; }
-    .weather-controls { width: 100%; }
-    .map-card iframe { height: 450px; }
+@media (max-width: 760px) {
+    header { align-items: flex-start; flex-direction: column; gap: 6px; }
+    nav { justify-content: flex-start; gap: 0 16px; width: 100%; }
+    .hero {
+        min-height: 0;
+        background-image: linear-gradient(rgba(238, 243, 240, 0.94), rgba(238, 243, 240, 0.94)), url("civicsense-logo.png");
+        background-position: center, right -48px center;
+        background-size: cover, auto 62%;
+    }
+}
+
+@media (max-width: 420px) {
+    header { padding-right: 16px; padding-left: 16px; }
+    nav { column-gap: 12px; }
+    nav a { font-size: 0.88rem; }
+    .hero { background-image: linear-gradient(rgba(238, 243, 240, 0.97), rgba(238, 243, 240, 0.97)); }
+    .hero h1 { font-size: clamp(2rem, 10vw, 2.5rem); }
+    .badge { font-size: 0.72rem; }
+    .weather-controls { gap: 12px; }
+    .simulate-button { width: 100%; }
+    .map-card iframe { height: 360px; }
+    footer { font-size: 0.9rem; }
 }
