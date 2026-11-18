@@ -1,0 +1,202 @@
+:root {
+    --bg: #f7f9f8;
+    --surface: #ffffff;
+    --ink: #10201b;
+    --muted: #5d6964;
+    --line: #dde5e1;
+    --primary: #16745d;
+    --primary-soft: #dff4ec;
+    --accent: #8fd5b9;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 { margin-top: 0; color: var(--ink); }
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68px;
+    padding: 10px 5%;
+    background: rgba(16, 32, 27, 0.96);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+.logo img { width: 36px; height: 36px; object-fit: contain; border-radius: 6px; }
+.logo span { color: var(--accent); }
+
+nav { display: flex; align-items: center; flex-wrap: wrap; }
+nav a {
+    margin-left: 18px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.95rem;
+    font-weight: 650;
+    text-decoration: none;
+}
+nav a:hover, nav a.active { color: var(--accent); }
+
+section { max-width: 1100px; margin: 0 auto; padding: 64px 5%; }
+.section-title { margin-bottom: 38px; text-align: center; }
+.section-title h1, .section-title h2 {
+    margin-bottom: 8px;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+}
+.section-title p { max-width: 650px; margin: 0 auto; color: var(--muted); }
+
+.hero {
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    padding: 64px 7%;
+    background-color: #eef3f0;
+    background-image: linear-gradient(90deg, rgba(238, 243, 240, 1) 0%, rgba(238, 243, 240, 0.94) 52%, rgba(238, 243, 240, 0.25) 100%), url("civicsense-logo.png");
+    background-repeat: no-repeat;
+    background-position: left top, right 8% center;
+    background-size: cover, auto 82%;
+}
+.hero-content { max-width: 720px; }
+.badge {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+.hero h1 { max-width: 700px; margin-bottom: 16px; font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.05; }
+.hero p { max-width: 650px; margin: 0 0 28px; color: var(--muted); font-size: 1.08rem; }
+
+.btn {
+    display: inline-block;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 22px;
+    background: var(--primary);
+    color: #fff;
+    font: inherit;
+    font-weight: 750;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn:hover { background: #115d4a; }
+
+.simulator-wrapper { text-align: center; }
+.simulator-wrapper h2 { margin-bottom: 8px; font-size: clamp(1.8rem, 3vw, 2.3rem); }
+.simulator-description { max-width: 650px; margin: 10px auto 28px; color: var(--muted); }
+
+.road-scene {
+    position: relative;
+    max-width: 900px;
+    margin: 20px auto 16px;
+    overflow: hidden;
+    background: #dfe6e2;
+    border-radius: 14px;
+}
+.road-scene.rain .simulation-image { filter: brightness(0.82) saturate(0.88); }
+.road-scene.night .simulation-image { filter: brightness(0.68) saturate(0.85); }
+.road-scene.fog .simulation-image { filter: grayscale(0.15) brightness(0.94); }
+.road-scene.active { outline: 3px solid var(--primary); }
+.simulation-image { display: block; width: 100%; height: auto; border-radius: 14px; }
+
+.led-sign {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    max-width: calc(100% - 24px);
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background: rgba(247, 249, 248, 0.94);
+    color: #52605a;
+    font-family: Consolas, monospace;
+    text-align: center;
+}
+.led-sign.active { background: #daf5e9; color: #174c3b; font-weight: 800; }
+.sensor-panel { margin: 12px auto 0; }
+.sensor-status { display: inline-block; padding: 6px 12px; color: var(--muted); background: #edf1ef; font-size: 0.85rem; }
+.sensor-panel.active .sensor-status { background: #daf5e9; color: #174c3b; }
+
+.weather-controls { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 18px; }
+.weather-controls > div { min-width: 220px; }
+.weather-controls label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 0.8rem; font-weight: 750; text-align: center; }
+.weather-select {
+    width: 220px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 11px 14px;
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+    font-weight: 700;
+}
+.simulate-button { margin-top: 24px; }
+
+.concept-box, .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+.card, .feature-item, .timeline-item {
+    padding: 6px 0;
+    background: transparent;
+    border: 0;
+    border-top: 2px solid var(--line);
+    border-radius: 0;
+}
+.card h3, .feature-item h4, .timeline-item h4 { margin: 14px 0 8px; }
+.card p, .feature-item p, .timeline-item p { margin: 0; color: var(--muted); }
+
+.timeline { display: flex; flex-direction: column; gap: 34px; border: 0; }
+.timeline-item { position: relative; padding: 16px 0 0; }
+.year { color: var(--primary); font-weight: 800; }
+
+.map-card { border: 0; overflow: hidden; background: transparent; }
+.map-card iframe { display: block; width: 100%; height: 600px; border: 0; border-radius: 14px; }
+.map-caption { padding: 10px 0; color: var(--muted); font-size: 0.85rem; }
+.project-note { margin-top: 28px; padding: 24px 0 0; border-top: 2px solid var(--line); }
+.project-note h2 { margin-bottom: 8px; font-size: 1.2rem; }
+.project-note p + p { margin-top: 10px; }
+
+footer {
+    margin-top: 60px;
+    padding: 38px 20px;
+    background: #10201b;
+    color: #dce7e2;
+    text-align: center;
+}
+footer p { margin: 4px 0; }
+footer strong { color: #fff; }
+
+@media (max-width: 700px) {
+    header { align-items: flex-start; flex-direction: column; gap: 8px; padding-top: 12px; padding-bottom: 12px; }
+    nav { gap: 10px; }
+    nav a { margin: 0 10px 0 0; }
+    .hero { min-height: 360px; padding: 48px 5%; background-position: left top, right -120px center; background-size: cover, auto 60%; }
+    .hero h1 { font-size: 2.3rem; }
+    section { padding: 48px 5%; }
+    .weather-field, .weather-select { width: 100%; min-width: 0; }
+    .weather-controls { width: 100%; }
+    .map-card iframe { height: 450px; }
+}

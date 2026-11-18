@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruces Peatonales Inteligentes | Inicio</title>
+    <link rel='stylesheet' href='styles.css'>
+    <script src='script.js' defer></script>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo"><img src="civicsense-logo.png" alt="Logo Civicsense"> Senda<span>Inteligente</span></a>
+        <nav>
+            <a href="index.html" class="active">Inicio</a>
+            <a href="problematica.html">Problemática</a>
+            <a href="historia.html">Evolución</a>
+            <a href="beneficios.html">Beneficios</a>
+            <a href="mapa.html">Mapa</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <div class="badge">Proyecto de seguridad vial urbana • Villa María</div>
+            <h1>Cruces peatonales inteligentes</h1>
+            <p>Infraestructura tecnológica activa para detectar peatones en tiempo real, alertar a conductores distraídos y prevenir siniestros viales.</p>
+            <a href="#simulador" class="btn">Probar simulador</a>
+        </div>
+    </div>
+
+    <section id="simulador">
+        <div class="simulator-wrapper">
+            <h2>Simulador del prototipo</h2>
+            <p>La imagen mantiene al peatón fijo. Al iniciar la simulación se activan los avisos y el sensor según el horario y el clima seleccionados.</p>
+
+            <div id="roadScene" class="road-scene day">
+                <img
+                    class="simulation-image"
+                    src="simulacion-senda-apagada.png"
+                    alt="Prototipo de senda peatonal inteligente con peatón, semáforo y luces en el cruce">
+                <div id="ledSign" class="led-sign" aria-live="polite">Sistema en espera</div>
+            </div>
+            <div id="sensorPanel" class="sensor-panel">
+                <span id="sensorStatus" class="sensor-status" aria-live="polite">Sistema en espera</span>
+            </div>
+
+            <div class="weather-controls">
+                <div>
+                    <label for="timeMode">Horario</label>
+                    <select id="timeMode" class="weather-select" aria-label="Horario del día">
+                        <option value="day">Día</option>
+                        <option value="sunrise">Amanecer</option>
+                        <option value="sunset">Atardecer</option>
+                        <option value="night">Noche</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="weatherMode">Clima</label>
+                    <select id="weatherMode" class="weather-select" aria-label="Clima">
+                        <option value="clear">Despejado</option>
+                        <option value="cloudy">Nublado</option>
+                        <option value="rain">Lluvia</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn" onclick="simularCruce()">Simular peatón cruzando</button>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Trabajo práctico integrador — Instituto "La Santísima Trinidad" (2026)</strong></p>
+        <p>Autores: Valentina Martinotti, Juan Cruz Rovere y Martiniano Vita</p>
+    </footer>
+</body>
+</html>
